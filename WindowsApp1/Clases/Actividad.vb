@@ -8,8 +8,18 @@ Public Class Actividad
     Public Property NumMaxVol As Byte
     Public Property Organizacion As Organizacion
     Public Property Descripcion As String
-    Public Property TipoActividad As New List(Of Tipo_Actividad)
-    Public Property Ods As New List(Of ODS)
+    Public Property TipoActividad As List(Of Tipo_Actividad)
+    Public Property Ods As List(Of ODS)
 
-
+    Public Sub New(nombre As String, duracion As Date, fechaInicio As Date, fechaFin As Date, numMaxVol As Byte, organizacion As Organizacion, descripcion As String, tipoActividad As List(Of Tipo_Actividad), ods As List(Of ODS))
+        Me.Nombre = nombre
+        Me.Duracion = duracion
+        Me.FechaInicio = fechaInicio
+        Me.FechaFin = fechaFin
+        Me.NumMaxVol = numMaxVol
+        Me.Organizacion = organizacion
+        Me.Descripcion = descripcion
+        Me.TipoActividad = New List(Of Tipo_Actividad)
+        Me.Ods = New List(Of ODS)
+    End Sub
 End Class
