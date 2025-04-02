@@ -67,6 +67,7 @@
     <Compile Include="Actividad.vb" />
     <Compile Include="Ciclo.vb" />
     <Compile Include="Disponibilidad.vb" />
+    <Compile Include="Gestion_Actividad.vb" />
     <Compile Include="ODS.vb" />
     <Compile Include="Organizacion.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
