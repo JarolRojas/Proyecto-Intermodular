@@ -6,7 +6,7 @@ Public Class Voluntario
     Public Property Apellido2 As String
     Public Property Correo As String
     Public Property Telefono As String
-    Public Property FechaNacimiento As DateTime
+    Public Property FechaNacimiento As Date
     Public Property Descripcion As String
     Public Property CodCiclo As String
     Public Property Ciclo As Ciclo
