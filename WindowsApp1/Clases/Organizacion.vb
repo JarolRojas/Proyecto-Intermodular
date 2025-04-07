@@ -16,4 +16,9 @@
         Me.Ambito = ambito
         Me.Descripcion = descripcion
     End Sub
+
+
+    Public Function ListaOrganizaciones(nomOrg As String)
+
+    End Function
 End Class
