@@ -1,4 +1,5 @@
 ﻿Public Class Organizacion
+    Public Property CodOrg As Integer
     Public Property Nombre As String
     Public Property TipoOrg As String
     Public Property Correo As String
