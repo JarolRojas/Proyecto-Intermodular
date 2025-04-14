@@ -34,6 +34,17 @@ Public Class Actividad
         Me.Descripcion = descripcion
         Me.TipoActividad = New List(Of Tipo_Actividad)
     End Sub
+    Public Sub New(codact As Integer, nombre As String, duracion As TimeSpan, fechaInicio As Date, fechaFin As Date, numMaxVol As Byte, organizacion As String, descripcion As String)
+        Me.CodAct = codact
+        Me.Nombre = nombre
+        Me.Duracion = duracion
+        Me.FechaInicio = fechaInicio
+        Me.FechaFin = fechaFin
+        Me.NumMaxVol = numMaxVol
+        Me.Organizacion = organizacion
+        Me.Descripcion = descripcion
+        Me.TipoActividad = New List(Of Tipo_Actividad)
+    End Sub
 
     Public Sub New(nombre As String, duracion As TimeSpan, fechaInicio As Date, fechaFin As Date, numMaxVol As Byte, descripcion As String)
         Me.Nombre = nombre
