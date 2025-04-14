@@ -24,7 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.CheckedListBox6 = New System.Windows.Forms.CheckedListBox()
+        Me.chkVoluntarios = New System.Windows.Forms.CheckedListBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.btn_Añadir_actividad = New System.Windows.Forms.Button()
         Me.btn_Filtrar_actividad = New System.Windows.Forms.Button()
@@ -37,7 +37,7 @@ Partial Class Form1
         Me.txtDuracion = New System.Windows.Forms.MaskedTextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.chklODS = New System.Windows.Forms.CheckedListBox()
-        Me.chklTipoActividad = New System.Windows.Forms.CheckedListBox()
+        Me.chkTipoActividad = New System.Windows.Forms.CheckedListBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -70,14 +70,14 @@ Partial Class Form1
         Me.Label20.TabIndex = 55
         Me.Label20.Text = "Descripción"
         '
-        'CheckedListBox6
+        'chkVoluntarios
         '
-        Me.CheckedListBox6.FormattingEnabled = True
-        Me.CheckedListBox6.Location = New System.Drawing.Point(1399, 197)
-        Me.CheckedListBox6.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckedListBox6.Name = "CheckedListBox6"
-        Me.CheckedListBox6.Size = New System.Drawing.Size(396, 140)
-        Me.CheckedListBox6.TabIndex = 54
+        Me.chkVoluntarios.FormattingEnabled = True
+        Me.chkVoluntarios.Location = New System.Drawing.Point(1399, 197)
+        Me.chkVoluntarios.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVoluntarios.Name = "chkVoluntarios"
+        Me.chkVoluntarios.Size = New System.Drawing.Size(396, 140)
+        Me.chkVoluntarios.TabIndex = 54
         '
         'Label19
         '
@@ -111,8 +111,8 @@ Partial Class Form1
         '
         'cbxOrganizacion
         '
+        Me.cbxOrganizacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxOrganizacion.FormattingEnabled = True
-        Me.cbxOrganizacion.Items.AddRange(New Object() {"AMAVIR", "ANA", "CUATROVIENTOS", "UNZUTXIKI"})
         Me.cbxOrganizacion.Location = New System.Drawing.Point(508, 309)
         Me.cbxOrganizacion.Margin = New System.Windows.Forms.Padding(4)
         Me.cbxOrganizacion.Name = "cbxOrganizacion"
@@ -123,10 +123,11 @@ Partial Class Form1
         '
         Me.txtNumMaxVol.Location = New System.Drawing.Point(508, 254)
         Me.txtNumMaxVol.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtNumMaxVol.Mask = "12"
+        Me.txtNumMaxVol.Mask = "00"
         Me.txtNumMaxVol.Name = "txtNumMaxVol"
         Me.txtNumMaxVol.Size = New System.Drawing.Size(151, 22)
         Me.txtNumMaxVol.TabIndex = 50
+        Me.txtNumMaxVol.ValidatingType = GetType(Integer)
         '
         'btn_Borrar_Actividad
         '
@@ -189,22 +190,21 @@ Partial Class Form1
         'chklODS
         '
         Me.chklODS.FormattingEnabled = True
-        Me.chklODS.Items.AddRange(New Object() {"01 FIN DE LA POBREZA", "02 HAMBRE CERO", "03 SALUD Y BIENESTAR", "04 EDUCACIÓN DE CALIDAD", "05 IGUALDAD DE GÉNERO", "06 AGUA LIMPIA Y SANEAMIENTO", "07 ENERGÍA ASEQUIBLE Y NO CONTAMINANTE", "08 TRABAJO DECENTE Y CRECIMIENTO ECONÓMICO", "09 INDUSTRIA, INNOVACIÓN E INFRAESTRUCTURA", "10 REDUCCIÓN DE LAS DESIGUALDADES", "11 CIUDADES Y COMUNIDADES SOSTENIBLES", "12 PRODUCCIÓN Y CONSUMO RESPONSABLES", "13 ACCIÓN POR EL CLIMA", "14 VIDA SUBMARINA", "15 VIDA DE ECOSISTEMAS TERRESTRES", "16 PAZ, JUSTICIA E INSTITUCIONES SÓLIDAS", "17 ALIANZAS PARA LOGRAR LOS OBJETIVOS"})
         Me.chklODS.Location = New System.Drawing.Point(967, 197)
         Me.chklODS.Margin = New System.Windows.Forms.Padding(4)
         Me.chklODS.Name = "chklODS"
         Me.chklODS.Size = New System.Drawing.Size(396, 140)
         Me.chklODS.TabIndex = 45
         '
-        'chklTipoActividad
+        'chkTipoActividad
         '
-        Me.chklTipoActividad.FormattingEnabled = True
-        Me.chklTipoActividad.Items.AddRange(New Object() {"Digital", "Salud", "Educativo", "Ambiental", "Deportivo", "Social", "Cultural", "Técnico"})
-        Me.chklTipoActividad.Location = New System.Drawing.Point(715, 197)
-        Me.chklTipoActividad.Margin = New System.Windows.Forms.Padding(4)
-        Me.chklTipoActividad.Name = "chklTipoActividad"
-        Me.chklTipoActividad.Size = New System.Drawing.Size(215, 140)
-        Me.chklTipoActividad.TabIndex = 44
+        Me.chkTipoActividad.FormattingEnabled = True
+        Me.chkTipoActividad.Items.AddRange(New Object() {"Digital", "Salud", "Educativo", "Ambiental", "Deportivo", "Social", "Cultural", "Técnico"})
+        Me.chkTipoActividad.Location = New System.Drawing.Point(715, 197)
+        Me.chkTipoActividad.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkTipoActividad.Name = "chkTipoActividad"
+        Me.chkTipoActividad.Size = New System.Drawing.Size(215, 140)
+        Me.chkTipoActividad.TabIndex = 44
         '
         'Label18
         '
@@ -292,6 +292,7 @@ Partial Class Form1
         Me.dgvActividades.Location = New System.Drawing.Point(89, 498)
         Me.dgvActividades.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvActividades.Name = "dgvActividades"
+        Me.dgvActividades.ReadOnly = True
         Me.dgvActividades.RowHeadersWidth = 51
         Me.dgvActividades.Size = New System.Drawing.Size(1260, 448)
         Me.dgvActividades.TabIndex = 32
@@ -315,7 +316,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtDescripcion)
         Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.CheckedListBox6)
+        Me.Controls.Add(Me.chkVoluntarios)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.btn_Añadir_actividad)
         Me.Controls.Add(Me.btn_Filtrar_actividad)
@@ -328,7 +329,7 @@ Partial Class Form1
         Me.Controls.Add(Me.txtDuracion)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.chklODS)
-        Me.Controls.Add(Me.chklTipoActividad)
+        Me.Controls.Add(Me.chkTipoActividad)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label16)
@@ -349,7 +350,7 @@ Partial Class Form1
 
     Friend WithEvents txtDescripcion As TextBox
     Friend WithEvents Label20 As Label
-    Friend WithEvents CheckedListBox6 As CheckedListBox
+    Friend WithEvents chkVoluntarios As CheckedListBox
     Friend WithEvents Label19 As Label
     Friend WithEvents btn_Añadir_actividad As Button
     Friend WithEvents btn_Filtrar_actividad As Button
@@ -362,7 +363,7 @@ Partial Class Form1
     Friend WithEvents txtDuracion As MaskedTextBox
     Friend WithEvents txtNombre As TextBox
     Friend WithEvents chklODS As CheckedListBox
-    Friend WithEvents chklTipoActividad As CheckedListBox
+    Friend WithEvents chkTipoActividad As CheckedListBox
     Friend WithEvents Label18 As Label
     Friend WithEvents Label17 As Label
     Friend WithEvents Label16 As Label
