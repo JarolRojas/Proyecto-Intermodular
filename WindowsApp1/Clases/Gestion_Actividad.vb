@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Runtime.CompilerServices
 
 Public Class Gestion_Actividad
     Private servidor = "DESKTOP-H03H3Q2"
