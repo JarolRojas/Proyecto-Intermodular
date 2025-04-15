@@ -22,6 +22,7 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.chkVoluntarios = New System.Windows.Forms.CheckedListBox()
@@ -48,6 +49,8 @@ Partial Class Form1
         Me.Label11 = New System.Windows.Forms.Label()
         Me.dgvActividades = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.btnMostrarTodo = New System.Windows.Forms.Button()
         CType(Me.dgvActividades, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -101,7 +104,7 @@ Partial Class Form1
         '
         'btn_Filtrar_actividad
         '
-        Me.btn_Filtrar_actividad.Location = New System.Drawing.Point(1444, 628)
+        Me.btn_Filtrar_actividad.Location = New System.Drawing.Point(1444, 614)
         Me.btn_Filtrar_actividad.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_Filtrar_actividad.Name = "btn_Filtrar_actividad"
         Me.btn_Filtrar_actividad.Size = New System.Drawing.Size(300, 50)
@@ -131,7 +134,7 @@ Partial Class Form1
         '
         'btn_Borrar_Actividad
         '
-        Me.btn_Borrar_Actividad.Location = New System.Drawing.Point(1444, 855)
+        Me.btn_Borrar_Actividad.Location = New System.Drawing.Point(1444, 856)
         Me.btn_Borrar_Actividad.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_Borrar_Actividad.Name = "btn_Borrar_Actividad"
         Me.btn_Borrar_Actividad.Size = New System.Drawing.Size(300, 54)
@@ -151,7 +154,7 @@ Partial Class Form1
         '
         'btn_Modificar_actividad
         '
-        Me.btn_Modificar_actividad.Location = New System.Drawing.Point(1444, 736)
+        Me.btn_Modificar_actividad.Location = New System.Drawing.Point(1444, 775)
         Me.btn_Modificar_actividad.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_Modificar_actividad.Name = "btn_Modificar_actividad"
         Me.btn_Modificar_actividad.Size = New System.Drawing.Size(300, 54)
@@ -301,18 +304,41 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(591, 5)
+        Me.Label1.Location = New System.Drawing.Point(699, 20)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(571, 91)
         Me.Label1.TabIndex = 57
         Me.Label1.Text = "ACTIVIDADES"
         '
+        'btnLimpiar
+        '
+        Me.btnLimpiar.BackgroundImage = CType(resources.GetObject("btnLimpiar.BackgroundImage"), System.Drawing.Image)
+        Me.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnLimpiar.Location = New System.Drawing.Point(447, 403)
+        Me.btnLimpiar.Name = "btnLimpiar"
+        Me.btnLimpiar.Size = New System.Drawing.Size(46, 44)
+        Me.btnLimpiar.TabIndex = 58
+        Me.btnLimpiar.UseVisualStyleBackColor = True
+        '
+        'btnMostrarTodo
+        '
+        Me.btnMostrarTodo.Location = New System.Drawing.Point(1444, 693)
+        Me.btnMostrarTodo.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnMostrarTodo.Name = "btnMostrarTodo"
+        Me.btnMostrarTodo.Size = New System.Drawing.Size(300, 54)
+        Me.btnMostrarTodo.TabIndex = 59
+        Me.btnMostrarTodo.Text = "Mostrar todas las Actividades"
+        Me.btnMostrarTodo.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1813, 906)
+        Me.Controls.Add(Me.btnMostrarTodo)
+        Me.Controls.Add(Me.btnLimpiar)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtDescripcion)
         Me.Controls.Add(Me.Label20)
@@ -374,4 +400,6 @@ Partial Class Form1
     Friend WithEvents Label11 As Label
     Friend WithEvents dgvActividades As DataGridView
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnLimpiar As Button
+    Friend WithEvents btnMostrarTodo As Button
 End Class

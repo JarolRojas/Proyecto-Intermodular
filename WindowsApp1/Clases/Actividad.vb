@@ -8,10 +8,12 @@ Public Class Actividad
     Public Property NumMaxVol As Byte
     Public Property Organizacion As String
     Public Property Descripcion As String
-    Public Property TipoActividad As List(Of String)
-    Public Property Ods As List(Of String)
-    Public Property Voluntarios As List(Of String)
-
+    Public Property ListaTipoActividad As List(Of String)
+    Public Property ListaOds As List(Of String)
+    Public Property ListaVoluntarios As List(Of String)
+    Public Property TipoActividad As String
+    Public Property Ods As String
+    Public Property Voluntarios As String
 
     Public Sub New(nombre As String, duracion As TimeSpan, fechaInicio As Date, fechaFin As Date, numMaxVol As Byte, organizacion As String, descripcion As String)
         Me.Nombre = nombre
@@ -21,19 +23,26 @@ Public Class Actividad
         Me.NumMaxVol = numMaxVol
         Me.Organizacion = organizacion
         Me.Descripcion = descripcion
-        Me.TipoActividad = New List(Of String)
-        Me.Ods = New List(Of String)
-        Me.Voluntarios = New List(Of String)
+        Me.ListaTipoActividad = New List(Of String)
+        Me.ListaOds = New List(Of String)
+        Me.ListaVoluntarios = New List(Of String)
+    End Sub
+
+    Public Sub New(nombre As String, duracion As TimeSpan, fechaInicio As Date, fechaFin As Date, numMaxVol As Byte, organizacion As String, descripcion As String, mostrarTipo As String, mostrarOds As String, mostrarVoluntarios As String)
+        Me.New(nombre, duracion, fechaInicio, fechaFin, numMaxVol, organizacion, descripcion)
+        Me.Ods = mostrarOds
+        Me.TipoActividad = mostrarTipo
+        Me.Voluntarios = mostrarVoluntarios
     End Sub
 
     Public Sub AñadirOds(ods As String)
-        Me.Ods.Add(ods)
+        Me.ListaOds.Add(ods)
     End Sub
 
     Public Sub AñadirTipo(tipo As String)
-        Me.TipoActividad.Add(tipo)
+        Me.ListaTipoActividad.Add(tipo)
     End Sub
     Public Sub AñadirVoluntarios(voluntario As String)
-        Me.Voluntarios.Add(voluntario)
+        Me.ListaVoluntarios.Add(voluntario)
     End Sub
 End Class

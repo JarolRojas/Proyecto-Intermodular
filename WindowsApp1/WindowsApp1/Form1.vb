@@ -19,11 +19,12 @@ Public Class Form1
         Dim respuesta As String = InputBox("Introduce el nombre de la actividad a eliminar", "Entrada de usuario")
         Dim resultado As Boolean = gestion.BorrarActividad(respuesta)
         If resultado Then
-            MessageBox.Show($"Actividad ""{txtNombre.Text}"" eliminada")
+            MessageBox.Show($"Actividad ""{respuesta}"" eliminada")
         Else
-            MessageBox.Show($"Actividad ""{txtNombre.Text}"" no existe")
+            MessageBox.Show($"Actividad ""{respuesta}"" no existe")
             txtNombre.Clear()
         End If
+        dgvActividades.DataSource = gestion.MostrarActividades
     End Sub
 
     Private Sub btn_Añadir_actividad_Click(sender As Object, e As EventArgs) Handles btn_Añadir_actividad.Click
@@ -51,9 +52,6 @@ Public Class Form1
             Exit Sub
         End If
         If controlDeErroresTxt(txtNumMaxVol, "No se ha introducido numero máximo de voluntarios", True) Then
-            Exit Sub
-        End If
-        If controlDeErroresTxt(txtNumMaxVol, "No se ha introducido descripción", True) Then
             Exit Sub
         End If
         If controlDeErroresTxt(cbxOrganizacion, "No se ha seleccionado organización", False) Then
@@ -175,6 +173,42 @@ Public Class Form1
             MessageBox.Show($"Actividad ""{respuesta}"" no existe")
         End If
 
+        dgvActividades.DataSource = gestion.MostrarActividades
+    End Sub
+
+    Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        txtNombre.Clear()
+        txtDuracion.Clear()
+        txtFechaInicio.Text = Today
+        txtFechaFin.Text = Today
+        txtNumMaxVol.Clear()
+        cbxOrganizacion.SelectedIndex = -1
+        For i As Integer = 0 To chkTipoActividad.Items.Count - 1
+            chkTipoActividad.SetItemChecked(i, False)
+        Next
+        chkTipoActividad.SelectedIndex = -1
+        For i As Integer = 0 To chklODS.Items.Count - 1
+            chklODS.SetItemChecked(i, False)
+        Next
+        chklODS.SelectedIndex = -1
+        For i As Integer = 0 To chkVoluntarios.Items.Count - 1
+            chkVoluntarios.SetItemChecked(i, False)
+        Next
+        chkVoluntarios.SelectedIndex = -1
+        txtDescripcion.Clear()
+    End Sub
+
+
+    Private Sub btn_filtrar_actividad_click(sender As Object, e As EventArgs) Handles btn_Filtrar_actividad.Click
+        Dim respuesta As String = InputBox("Introduce el nombre de la actividad a modificar", "Entrada de usuario")
+        dgvActividades.DataSource = gestion.FiltrarActividad(respuesta)
+        If dgvActividades.RowCount < 1 Then
+            dgvActividades.DataSource = gestion.MostrarActividades
+            MessageBox.Show($"Actividad ""{respuesta}"" no existe")
+        End If
+    End Sub
+
+    Private Sub btnMostrarTodo_Click(sender As Object, e As EventArgs) Handles btnMostrarTodo.Click
         dgvActividades.DataSource = gestion.MostrarActividades
     End Sub
 End Class
