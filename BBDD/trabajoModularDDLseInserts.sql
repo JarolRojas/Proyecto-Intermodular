@@ -19,8 +19,8 @@ CREATE TABLE ORGANIZACION(
     CONSTRAINT PK_ORGANIZACION PRIMARY KEY (CODORG),
     CONSTRAINT UQ_ORGANIZACION_CORREO UNIQUE (CORREO),
     CONSTRAINT UQ_ORGANIZACION_TELEFONO UNIQUE (TELEFONO),
-    CONSTRAINT CK_ORGANIZACION_TIPO_ORG CHECK(TIPO_ORG IN ('ONG', 'FUNDACION', 'ASOCIACION', 'ENTIDAD PÚBLICA', 'OTRA')),
-    CONSTRAINT CK_ORGANIZACION_SECTOR CHECK(SECTOR IN ('SOCIAL', 'SALUD', 'EDUCATIVO', 'AMBIENTAL', 'CULTURAL', 'DEPORTIVO', 'TECNOLÓGICO', 'OTRO')),
+    CONSTRAINT CK_ORGANIZACION_TIPO_ORG CHECK(TIPO_ORG IN ('ONG', 'FUNDACION', 'ASOCIACION', 'ENTIDAD Pï¿½BLICA', 'OTRA')),
+    CONSTRAINT CK_ORGANIZACION_SECTOR CHECK(SECTOR IN ('SOCIAL', 'SALUD', 'EDUCATIVO', 'AMBIENTAL', 'CULTURAL', 'DEPORTIVO', 'TECNOLï¿½GICO', 'OTRO')),
     CONSTRAINT CK_ORGANIZACION_AMBITO CHECK(AMBITO IN ('LOCAL', 'REGIONAL', 'NACIONAL', 'INTERNACIONAL')),
     CONSTRAINT CK_ORGANIZACION_TELEFONO CHECK(TELEFONO LIKE '[6-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     CONSTRAINT CK_ORGANIZACION_CORREO CHECK(CORREO LIKE '%@%.%')
@@ -121,7 +121,7 @@ CREATE TABLE DISPONIBILIDAD(
     -- CONSTRAINTS
     CONSTRAINT PK_DISPONIBILIDAD PRIMARY KEY (CODVOL, DIA, HORA_SLOT),
     CONSTRAINT FK_DISPONIBILIDAD_VOLUNTARIO FOREIGN KEY (CODVOL) REFERENCES VOLUNTARIO(CODVOL),
-    CONSTRAINT CK_DISPONIBILIDAD_DIA CHECK(DIA IN ('LUNES','MARTES','MIÉRCOLES','JUEVES','VIERNES','SÁBADO','DOMINGO')),
+    CONSTRAINT CK_DISPONIBILIDAD_DIA CHECK(DIA IN ('LUNES','MARTES','MIï¿½RCOLES','JUEVES','VIERNES','Sï¿½BADO','DOMINGO')),
     CONSTRAINT CK_DISPONIBILIDAD_HORA_SLOT CHECK(HORA_SLOT IN ('3-4', '4-5', '5-6', '6-7', '7-8', '8-9', '9-10'))
 )
 GO
@@ -175,11 +175,11 @@ CREATE TABLE ACT_PRACTICA_ODS(
 --INSERTARD DATOS EN TABLA ORGANIZACION
 INSERT INTO ORGANIZACION (NOMBRE, TIPO_ORG, CORREO, TELEFONO, SECTOR, AMBITO, DESCRIPCION)
 VALUES
-('AMAVIR', 'FUNDACION', 'amavir@example.com', '600000001', 'SALUD', 'LOCAL', 'Organización dedicada a la salud de los mayores.'),
+('AMAVIR', 'FUNDACION', 'amavir@example.com', '600000001', 'SALUD', 'LOCAL', 'Organizaciï¿½n dedicada a la salud de los mayores.'),
 ('ANA', 'ONG', 'ana@example.com', '600000002', 'SOCIAL', 'REGIONAL', 'ONG enfocada en la ayuda social.'),
-('CUATROVIENTOS', 'ASOCIACION', 'cuatrocientos@example.com', '600000003', 'EDUCATIVO', 'NACIONAL', 'Asociación educativa.'),
-('SOLERA', 'ENTIDAD PÚBLICA', 'solera@example.com', '600000004', 'AMBIENTAL', 'INTERNACIONAL', 'Entidad pública ambiental.'),
-('UNZUTXIKI', 'OTRA', 'unzutxiki@example.com', '600000005', 'CULTURAL', 'LOCAL', 'Organización cultural local.');
+('CUATROVIENTOS', 'ASOCIACION', 'cuatrocientos@example.com', '600000003', 'EDUCATIVO', 'NACIONAL', 'Asociaciï¿½n educativa.'),
+('SOLERA', 'ENTIDAD Pï¿½BLICA', 'solera@example.com', '600000004', 'AMBIENTAL', 'INTERNACIONAL', 'Entidad pï¿½blica ambiental.'),
+('UNZUTXIKI', 'OTRA', 'unzutxiki@example.com', '600000005', 'CULTURAL', 'LOCAL', 'Organizaciï¿½n cultural local.');
 
 --INSERTARD DATOS EN TABLA CICLO
 INSERT INTO CICLO (CODCICLO, NOMBRE, CURSO)
@@ -188,33 +188,33 @@ VALUES
 ('2SC', 'SERVICIOS COMERCIALES', 2),
 ('1AAG', 'AUXILIAR ADMINISTRATIVO GENERAL', 1),
 ('2AAG', 'AUXILIAR ADMINISTRATIVO GENERAL', 2),
-('1GA', 'GESTIÓN ADMINISTRATIVA', 1),
-('2GA', 'GESTIÓN ADMINISTRATIVA', 2),
+('1GA', 'GESTIï¿½N ADMINISTRATIVA', 1),
+('2GA', 'GESTIï¿½N ADMINISTRATIVA', 2),
 ('1AC', 'ACTIVIDADES COMERCIALES', 1),
 ('2AC', 'ACTIVIDADES COMERCIALES', 2),
-('1SMR', 'SISTEMAS MICROINFORMÁTICOS Y REDES', 1),
-('2SMR', 'SISTEMAS MICROINFORMÁTICOS Y REDES', 2),
-('1AF', 'ADMINISTRACIÓN Y FINANZAS', 1),
-('2AF', 'ADMINISTRACIÓN Y FINANZAS', 2),
+('1SMR', 'SISTEMAS MICROINFORMï¿½TICOS Y REDES', 1),
+('2SMR', 'SISTEMAS MICROINFORMï¿½TICOS Y REDES', 2),
+('1AF', 'ADMINISTRACIï¿½N Y FINANZAS', 1),
+('2AF', 'ADMINISTRACIï¿½N Y FINANZAS', 2),
 ('1CI', 'COMERCIO INTERNACIONAL', 1),
 ('2CI', 'COMERCIO INTERNACIONAL', 2),
-('1GV', 'GESTIÓN DE VENTAS', 1),
-('2GV', 'GESTIÓN DE VENTAS', 2),
-('1TL', 'TRANSPORTE Y LOGÍSTICA', 1),
-('2TL', 'TRANSPORTE Y LOGÍSTICA', 2),
-('1ASIR', 'ADMINISTRACIÓN DE SISTEMAS INFORMÁTICOS Y REDES', 1),
-('2ASIR', 'ADMINISTRACIÓN DE SISTEMAS INFORMÁTICOS Y REDES', 2),
+('1GV', 'GESTIï¿½N DE VENTAS', 1),
+('2GV', 'GESTIï¿½N DE VENTAS', 2),
+('1TL', 'TRANSPORTE Y LOGï¿½STICA', 1),
+('2TL', 'TRANSPORTE Y LOGï¿½STICA', 2),
+('1ASIR', 'ADMINISTRACIï¿½N DE SISTEMAS INFORMï¿½TICOS Y REDES', 1),
+('2ASIR', 'ADMINISTRACIï¿½N DE SISTEMAS INFORMï¿½TICOS Y REDES', 2),
 ('1DAM', 'DESARROLLO DE APLICACIONES MULTIPLATAFORMA', 1),
 ('2DAM', 'DESARROLLO DE APLICACIONES MULTIPLATAFORMA', 2);
 
 --INSERTARD DATOS EN TABLA VOLUNTARIO
 INSERT INTO VOLUNTARIO (NOMBRE, APELLIDO1, APELLIDO2, CORREO, TELEFONO, FECHA_NACIMIENTO, DESCRIPCION, CODCICLO)
 VALUES
-('Juan', 'Pérez', 'García', 'juan.perez@example.com', '600000006', '1995-05-20', 'Voluntario entusiasta.', '1SMR'),
-('María', 'López', 'Sánchez', 'maria.lopez@example.com', '600000007', '1998-07-15', 'Interesada en actividades sociales.', '2DAM'),
-('Carlos', 'Gómez', 'Martínez', 'carlos.gomez@example.com', '600000008', '1990-03-10', NULL, '1DAM'),
-('Ana', 'Fernández', 'Ruiz', 'ana.fernandez@example.com', '600000009', '2000-01-01', 'Estudiante de marketing.', '1DAM'),
-('Luis', 'Martín', 'Hernández', 'luis.martin@example.com', '600000010', '1992-11-25', 'Experiencia en educación.', '2SMR');
+('Juan', 'Pï¿½rez', 'Garcï¿½a', 'juan.perez@example.com', '600000006', '1995-05-20', 'Voluntario entusiasta.', '1SMR'),
+('Marï¿½a', 'Lï¿½pez', 'Sï¿½nchez', 'maria.lopez@example.com', '600000007', '1998-07-15', 'Interesada en actividades sociales.', '2DAM'),
+('Carlos', 'Gï¿½mez', 'Martï¿½nez', 'carlos.gomez@example.com', '600000008', '1990-03-10', NULL, '1DAM'),
+('Ana', 'Fernï¿½ndez', 'Ruiz', 'ana.fernandez@example.com', '600000009', '2000-01-01', 'Estudiante de marketing.', '1DAM'),
+('Luis', 'Martï¿½n', 'Hernï¿½ndez', 'luis.martin@example.com', '600000010', '1992-11-25', 'Experiencia en educaciï¿½n.', '2SMR');
 
 --INSERTARD DATOS EN TABLA TIPO_ACTIVIDAD
 INSERT INTO TIPO_ACTIVIDAD (DESCRIPCION)
@@ -235,19 +235,19 @@ VALUES
 (1, 'Fin de la pobreza'),  
 (2, 'Hambre cero'),  
 (3, 'Salud y bienestar'),  
-(4, 'Educación de calidad'),  
-(5, 'Igualdad de género'),  
+(4, 'Educaciï¿½n de calidad'),  
+(5, 'Igualdad de gï¿½nero'),  
 (6, 'Agua limpia y saneamiento'),  
-(7, 'Energía asequible y no contaminante'),  
-(8, 'Trabajo decente y crecimiento económico'),  
-(9, 'Industria, innovación e infraestructura'),  
-(10, 'Reducción de las desigualdades'),  
+(7, 'Energï¿½a asequible y no contaminante'),  
+(8, 'Trabajo decente y crecimiento econï¿½mico'),  
+(9, 'Industria, innovaciï¿½n e infraestructura'),  
+(10, 'Reducciï¿½n de las desigualdades'),  
 (11, 'Ciudades y comunidades sostenibles'),  
-(12, 'Producción y consumo responsables'),  
-(13, 'Acción por el clima'),  
+(12, 'Producciï¿½n y consumo responsables'),  
+(13, 'Acciï¿½n por el clima'),  
 (14, 'Vida submarina'),  
 (15, 'Vida de ecosistemas terrestres'),  
-(16, 'Paz, justicia e instituciones sólidas'),  
+(16, 'Paz, justicia e instituciones sï¿½lidas'),  
 (17, 'Alianzas para lograr los objetivos');  
 
 --INSERTARD DATOS EN TABLA ACTIVIDAD
@@ -264,18 +264,18 @@ VALUES
 INSERT INTO DISPONIBILIDAD (CODVOL, DIA, HORA_SLOT)
 VALUES
 (1, 'LUNES', '3-4'),
-(1, 'MIÉRCOLES', '5-6'),
+(1, 'MIï¿½RCOLES', '5-6'),
 (2, 'MARTES', '4-5'),
 (2, 'JUEVES', '6-7'),
 (3, 'VIERNES', '7-8'),
-(4, 'SÁBADO', '8-9'),
+(4, 'Sï¿½BADO', '8-9'),
 (5, 'DOMINGO', '9-10');
 
 --INSERTARD DATOS EN TABLA VOL_PARTICIPA_ACT
 INSERT INTO VOL_PARTICIPA_ACT (CODVOL, CODACT)
 VALUES
 (1, 1),  -- Juan participa en Taller de salud
-(2, 2),  -- María participa en Reparto de alimentos
+(2, 2),  -- Marï¿½a participa en Reparto de alimentos
 (3, 3),  -- Carlos participa en Jornada educativa
 (4, 4),  -- Ana participa en Limpieza de playa
 (5, 5);  -- Luis participa en Festival cultural
@@ -284,7 +284,7 @@ VALUES
 INSERT INTO VOL_PREFIERE_TACT (CODVOL, CODTIPO)
 VALUES
 (1, 1),  -- Juan prefiere Educativa
-(2, 2),  -- María prefiere Social
+(2, 2),  -- Marï¿½a prefiere Social
 (3, 3),  -- Carlos prefiere Ambiental
 (4, 4),  -- Ana prefiere Cultural
 (5, 5);  -- Luis prefiere Deportiva
@@ -295,9 +295,9 @@ INSERT INTO ACT_PRACTICA_ODS (CODACT, NUMODS)
 VALUES
 (1, 3),  -- Taller de salud (Salud y bienestar)
 (2, 2),  -- Reparto de alimentos (Hambre cero)
-(3, 4),  -- Jornada educativa (Educación de calidad)
+(3, 4),  -- Jornada educativa (Educaciï¿½n de calidad)
 (4, 1),  -- Limpieza de playa (Fin de la pobreza)
-(5, 5);  -- Festival cultural (Igualdad de género)
+(5, 5);  -- Festival cultural (Igualdad de gï¿½nero)
 
 --INSERTARD DATOS EN TABLA ACT_ASOCIADO_TACT
 INSERT INTO ACT_ASOCIADO_TACT (CODACT, CODTIPO)
@@ -310,78 +310,82 @@ VALUES
 
 
 
-
 -- PROCESOS ALMACENADOS
---P1 Y P2 ESTÁN SIN EJECUTAR PARA REVISAR
-
---PA1: PASAR NOMBRE ORGANIZACIÓN Y DEVOLVER SUS ACTIVIDADES
-CREATE PROCEDURE ACTIVIDADES_DE_UNA_ORGANIZACION
-@NOMBREORG NVARCHAR(50)
+--BUSCAR ACTIVIDADES POR UN ODS DADO
+GO
+CREATE OR ALTER PROCEDURE ActividadesPorODS
+    @NumODS SMALLINT
 AS
+BEGIN
+    SELECT A.*
+    FROM ACTIVIDAD AS A INNER JOIN ACT_PRACTICA_ODS APO 
+                                ON A.CODACT = APO.CODACT
+                                    INNER JOIN ODS AS O 
+                                            ON O.NUMODS = APO.NUMODS
+    WHERE O.NUMODS = @NumODS;
+END
+GO
+EXEC ActividadesPorODS @NumODS = 4;
 
-SELECT A.*
-FROM ACTIVIDAD AS A
-WHERE A.CODORG =	(SELECT O.CODORG 
-					FROM ORGANIZACION AS O 
-					WHERE O.NOMBRE = @NOMBREORG)
-
---LLAMADA P1
-
-EXEC ACTIVIDADES_DE_UNA_ORGANIZACION 'AMAVIR'
-
-
---P2: DADA UNA FECHA INICIO VER LOS VOLUNTARIOS DISPONIBLES DE LA FECHA
-
-CREATE PROCEDURE VOLUNTARIOS_DISPO_FECHA
-@FECHA AS DATETIME
-@@DATEFIRST SET DATEFIRST 1
+--BUSCAR ACTIVIDADES REALIZADAS POR UNA ORGANIZACION DADA
+GO
+CREATE PROCEDURE ObtenerActividadesPorOrganizacion
+    @NombreOrganizacion NVARCHAR(50)
 AS
+    SELECT A.*
+    FROM ACTIVIDAD A
+    INNER JOIN ORGANIZACION O ON A.CODORG = O.CODORG
+    WHERE O.NOMBRE = @NombreOrganizacion
+GO
+EXEC ObtenerActividadesPorOrganizacion 'ANA';
+GO
 
-SELECT V.NOMBRE
-FROM VOLUNTARIO AS V
-WHERE V.CODVOL=(SELECT D.CODVOL
-				FROM DISPONIBILIDAD AS D
-				WHERE D.DIA= @FECHA.DATENAME())
-
-
-
--- P3 AÑADIR ACTIVIDAD
-
-CREATE PROCEDURE ANADIR_ACTIVIDAD
-	@NOMBRE NVARCHAR(70),
-	@DURACION_SESION TIME, 
-	@FECHA_INICIO DATE, 
-	@FECHA_FIN DATE, 
-	@N_MAX_VOLUNTARIOS SMALLINT,
-	@CODORG SMALLINT,
-	@DESCRIPCION NVARCHAR(500)
+--BUSCAR VOLUNTARIOS PERTENECIENTES DEL CICLO DADO
+CREATE PROCEDURE ObtenerVoluntariosPorCiclo
+    @CodigoCiclo NVARCHAR(10)
 AS
-	INSERT INTO ACTIVIDAD (NOMBRE, DURACION_SESION, FECHA_INICIO, FECHA_FIN, N_MAX_VOLUNTARIOS, CODORG, DESCRIPCION)
-	VALUES (@NOMBRE,@DURACION_SESION,@FECHA_INICIO,@FECHA_FIN,@N_MAX_VOLUNTARIOS,@CODORG,@DESCRIPCION)
+    SELECT V.*
+    FROM VOLUNTARIO V
+    INNER JOIN CICLO C ON V.CODCICLO = C.CODCICLO
+    WHERE C.CODCICLO = @CodigoCiclo;
+GO
 
-	GO
+EXEC ObtenerVoluntariosPorCiclo '2DAM';
 
 
-CREATE PROCEDURE ANADIR_ACT_PRACTICA_ODS
-	@CODACT SMALLINT,
-	@NUMODS SMALLINT
+
+
+--BUSCAR VOLUNTARIOS DISPONIBLES PARA UNA FECHA DADA
+GO
+CREATE PROCEDURE ObtenerVoluntariosPorFecha
+    @FechaInicio DATE
 AS
-	INSERT INTO ACT_PRACTICA_ODS (CODACT, NUMODS)
-	VALUES (@CODACT, @NUMODS)
+    DECLARE @DiaSemana NVARCHAR(15)
+    DECLARE @NombreDia NVARCHAR(15)
 
-	GO
-CREATE PROCEDURE ANADIR_ACT_ASOCIADO_TACT
-	@CODACT SMALLINT,
-	@CODTIPO SMALLINT
-AS
-	INSERT INTO ACT_ASOCIADO_TACT (CODACT, CODTIPO)
-	VALUES (@CODACT, @CODTIPO)
-	GO
+    SET @NombreDia = DATENAME(WEEKDAY, @FechaInicio);
 
-CREATE PROCEDURE ANADIR_VOL_PARTICIPA_ACT
-	@CODVOL SMALLINT,
-	@CODACT SMALLINT
-AS
-	INSERT INTO VOL_PARTICIPA_ACT (CODVOL, CODACT)
-	VALUES (@CODVOL, @CODACT)
+    IF @NombreDia = 'Monday'
+        SET @DiaSemana = 'Lunes'
+    ELSE IF @NombreDia = 'Tuesday'
+        SET @DiaSemana = 'Martes'
+    ELSE IF @NombreDia = 'Wednesday'
+        SET @DiaSemana = 'MiÃ©rcoles'
+    ELSE IF @NombreDia = 'Thursday'
+        SET @DiaSemana = 'Jueves'
+    ELSE IF @NombreDia = 'Friday'
+        SET @DiaSemana = 'Viernes'
+    ELSE IF @NombreDia = 'Saturday'
+        SET @DiaSemana = 'SÃ¡bado'
+    ELSE IF @NombreDia = 'Sunday'
+        SET @DiaSemana = 'Domingo'
+    ELSE
+        SET @DiaSemana = @NombreDia
+    SELECT @NombreDia, V.*
+    FROM VOLUNTARIO V
+    INNER JOIN DISPONIBILIDAD D ON V.CODVOL = D.CODVOL
+    WHERE D.DIA = @DiaSemana
+GO
 
+
+EXEC ObtenerVoluntariosPorFecha '2025-04-20';
