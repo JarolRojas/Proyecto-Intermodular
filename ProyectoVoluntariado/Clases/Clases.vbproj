@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EA61ECA6-440F-474C-8622-3CBDE47689D7}</ProjectGuid>
+    <ProjectGuid>{4538FC38-1A2C-4AE8-B941-8565BE401B57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Clases</RootNamespace>
     <AssemblyName>Clases</AssemblyName>
@@ -65,12 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actividad.vb" />
-    <Compile Include="Ciclo.vb" />
-    <Compile Include="Disponibilidad.vb" />
-    <Compile Include="Gestion_Actividad.vb" />
-    <Compile Include="Gestion_BBDD.vb" />
-    <Compile Include="ODS.vb" />
-    <Compile Include="Organizacion.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -86,8 +80,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Tipo_Actividad.vb" />
-    <Compile Include="Voluntario.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
