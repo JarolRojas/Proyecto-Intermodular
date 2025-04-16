@@ -51,6 +51,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnLimpiar = New System.Windows.Forms.Button()
         Me.btnMostrarTodo = New System.Windows.Forms.Button()
+        Me.btnFiltradoAvanzado = New System.Windows.Forms.Button()
         CType(Me.dgvActividades, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -94,7 +95,7 @@ Partial Class Form1
         '
         'btn_Añadir_actividad
         '
-        Me.btn_Añadir_actividad.Location = New System.Drawing.Point(1444, 535)
+        Me.btn_Añadir_actividad.Location = New System.Drawing.Point(1399, 543)
         Me.btn_Añadir_actividad.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_Añadir_actividad.Name = "btn_Añadir_actividad"
         Me.btn_Añadir_actividad.Size = New System.Drawing.Size(300, 54)
@@ -104,7 +105,7 @@ Partial Class Form1
         '
         'btn_Filtrar_actividad
         '
-        Me.btn_Filtrar_actividad.Location = New System.Drawing.Point(1444, 614)
+        Me.btn_Filtrar_actividad.Location = New System.Drawing.Point(1399, 622)
         Me.btn_Filtrar_actividad.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_Filtrar_actividad.Name = "btn_Filtrar_actividad"
         Me.btn_Filtrar_actividad.Size = New System.Drawing.Size(300, 50)
@@ -134,7 +135,7 @@ Partial Class Form1
         '
         'btn_Borrar_Actividad
         '
-        Me.btn_Borrar_Actividad.Location = New System.Drawing.Point(1444, 856)
+        Me.btn_Borrar_Actividad.Location = New System.Drawing.Point(1399, 864)
         Me.btn_Borrar_Actividad.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_Borrar_Actividad.Name = "btn_Borrar_Actividad"
         Me.btn_Borrar_Actividad.Size = New System.Drawing.Size(300, 54)
@@ -154,7 +155,7 @@ Partial Class Form1
         '
         'btn_Modificar_actividad
         '
-        Me.btn_Modificar_actividad.Location = New System.Drawing.Point(1444, 775)
+        Me.btn_Modificar_actividad.Location = New System.Drawing.Point(1399, 783)
         Me.btn_Modificar_actividad.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_Modificar_actividad.Name = "btn_Modificar_actividad"
         Me.btn_Modificar_actividad.Size = New System.Drawing.Size(300, 54)
@@ -202,7 +203,6 @@ Partial Class Form1
         'chkTipoActividad
         '
         Me.chkTipoActividad.FormattingEnabled = True
-        Me.chkTipoActividad.Items.AddRange(New Object() {"Digital", "Salud", "Educativo", "Ambiental", "Deportivo", "Social", "Cultural", "Técnico"})
         Me.chkTipoActividad.Location = New System.Drawing.Point(715, 197)
         Me.chkTipoActividad.Margin = New System.Windows.Forms.Padding(4)
         Me.chkTipoActividad.Name = "chkTipoActividad"
@@ -323,20 +323,31 @@ Partial Class Form1
         '
         'btnMostrarTodo
         '
-        Me.btnMostrarTodo.Location = New System.Drawing.Point(1444, 693)
+        Me.btnMostrarTodo.Location = New System.Drawing.Point(1399, 701)
         Me.btnMostrarTodo.Margin = New System.Windows.Forms.Padding(4)
         Me.btnMostrarTodo.Name = "btnMostrarTodo"
         Me.btnMostrarTodo.Size = New System.Drawing.Size(300, 54)
         Me.btnMostrarTodo.TabIndex = 59
-        Me.btnMostrarTodo.Text = "Mostrar todas las Actividades"
+        Me.btnMostrarTodo.Text = "Mostrar Actividades"
         Me.btnMostrarTodo.UseVisualStyleBackColor = True
+        '
+        'btnFiltradoAvanzado
+        '
+        Me.btnFiltradoAvanzado.Location = New System.Drawing.Point(1721, 622)
+        Me.btnFiltradoAvanzado.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnFiltradoAvanzado.Name = "btnFiltradoAvanzado"
+        Me.btnFiltradoAvanzado.Size = New System.Drawing.Size(148, 50)
+        Me.btnFiltradoAvanzado.TabIndex = 60
+        Me.btnFiltradoAvanzado.Text = "Filtrado Avanzado"
+        Me.btnFiltradoAvanzado.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1813, 906)
+        Me.ClientSize = New System.Drawing.Size(1914, 1055)
+        Me.Controls.Add(Me.btnFiltradoAvanzado)
         Me.Controls.Add(Me.btnMostrarTodo)
         Me.Controls.Add(Me.btnLimpiar)
         Me.Controls.Add(Me.Label1)
@@ -402,4 +413,5 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents btnLimpiar As Button
     Friend WithEvents btnMostrarTodo As Button
+    Friend WithEvents btnFiltradoAvanzado As Button
 End Class

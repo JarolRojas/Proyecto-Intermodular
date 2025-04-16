@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 Imports System.Runtime.CompilerServices
 
 Public Class Gestion_Actividad
-    Private servidor = "LAPTOP-APE4QCK2"
+    Private servidor = "Localhost"
     Private cadenaConexion = $"Data Source = {servidor}; Initial Catalog = VOLUNTARIADO; Integrated Security = SSPI; MultipleActiveResultSets=true"
     Dim conexion As New SqlConnection(cadenaConexion)
 

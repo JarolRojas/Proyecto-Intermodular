@@ -211,4 +211,8 @@ Public Class Form1
     Private Sub btnMostrarTodo_Click(sender As Object, e As EventArgs) Handles btnMostrarTodo.Click
         dgvActividades.DataSource = gestion.MostrarActividades
     End Sub
+
+    Private Sub btnFiltradoAvanzado_Click(sender As Object, e As EventArgs) Handles btnFiltradoAvanzado.Click
+
+    End Sub
 End Class
