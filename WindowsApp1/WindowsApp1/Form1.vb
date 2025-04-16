@@ -1,110 +1,66 @@
 ﻿Imports Clases
 Public Class Form1
     Dim gestion As New Gestion_Actividad
-    Dim gestionBD As New Gestion_BBDD
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvActividades.DataSource = gestionBD.MostrarActividades
-
-        Dim odsList As List(Of ODS) = gestionBD.ListarODS()
-
-        For Each ods As ODS In odsList
-            chklODS.Items.Add($"{ods.NumOds}  {ods.Descripcion}")
-        Next
-        Dim TaList As List(Of Tipo_Actividad) = gestionBD.ListarTipoAct()
-        For Each ta As Tipo_Actividad In TaList
-            chklTipoActividad.Items.Add($"{ta.Descripcion}")
-        Next
-        Dim orgList As List(Of Organizacion) = gestionBD.listarOrg()
-        For Each org As Organizacion In orgList
-            cbxOrganizacion.Items.Add($"{org.Nombre}")
-        Next
-
+        dgvActividades.DataSource = gestion.MostrarActividades
+        Dim orgs As List(Of String) = gestion.MostrarOrgs
+        Dim ods As List(Of String) = gestion.MostrarOds
+        Dim tipo As List(Of String) = gestion.MostrarTipo
+        Dim voluntarios As List(Of String) = gestion.MostrarVoluntarios
+        chkTipoActividad.Items.AddRange(tipo.ToArray)
+        chklODS.Items.AddRange(ods.ToArray)
+        chkVoluntarios.Items.AddRange(voluntarios.ToArray)
+        cbxOrganizacion.Items.AddRange(orgs.ToArray)
+        txtFechaInicio.Text = Today
+        txtFechaFin.Text = Today
+>>>>>>> Daniel
     End Sub
 
 
     Private Sub btn_Borrar_Actividad_Click(sender As Object, e As EventArgs) Handles btn_Borrar_Actividad.Click
-        Dim nombre As String
-        Dim act As List(Of Actividad) = dgvActividades.DataSource
-
-        nombre = txtNombre.Text.ToUpper
-
-        If String.IsNullOrEmpty(nombre) Then
-            MessageBox.Show("La actividad no puede estar vacía. Escriba el nombre", "Error")
+        Dim respuesta As String = InputBox("Introduce el nombre de la actividad a eliminar", "Entrada de usuario")
+        Dim resultado As Boolean = gestion.BorrarActividad(respuesta)
+        If resultado Then
+            MessageBox.Show($"Actividad ""{respuesta}"" eliminada")
         Else
-            If gestion.BorrarActividad(nombre) = False Then
-                MessageBox.Show("La actividad que intentas borrar no existe.", "Error")
-            Else
-
-                Dim resultado As DialogResult = MessageBox.Show("¿Desea eliminar ese registro?", "Confirmación", MessageBoxButtons.YesNo)
-
-                If resultado = DialogResult.Yes Then
-                    gestion.BorrarActividad(nombre)
-                    MessageBox.Show($"La actividad {nombre} ha sido borrada con éxito")
-
-                End If
-
-                If resultado = DialogResult.No Then
-                    MessageBox.Show("No borramos.")
-                End If
-
-
-            End If
+            MessageBox.Show($"Actividad ""{respuesta}"" no existe")
+            txtNombre.Clear()
         End If
-
-        dgvActividades.DataSource = gestionBD.MostrarActividades
-        txtNombre.Text = ""
+        dgvActividades.DataSource = gestion.MostrarActividades
     End Sub
-    'Private Sub btn_Borrar_Actividad_Click(sender As Object, e As EventArgs) Handles btn_Borrar_Actividad.Click
-    '    If String.IsNullOrWhiteSpace(txtNombre.Text) Then
-    '        MessageBox.Show("No se ha introducido nombre")
-    '        txtNombre.Clear()
-    '        txtNombre.Focus()
-    '    End If
-    '    Dim resultado As Boolean = gestion.BorrarActividad(txtNombre.Text)
-    '    If resultado Then
-    '        MessageBox.Show($"Actividad {txtNombre.Text} eliminada")
-    '        txtNombre.Clear()
-    '    Else
-    '        MessageBox.Show($"Actividad {txtNombre.Text} no existe")
-    '        txtNombre.Clear()
-    '    End If
-    'End Sub
+>>>>>>> Daniel
 
     Private Sub btn_Añadir_actividad_Click(sender As Object, e As EventArgs) Handles btn_Añadir_actividad.Click
         If controlDeErroresTxt(txtNombre, "No se ha introducido nombre", True) Then
             Exit Sub
         End If
-        If txtDuracion.Text.Length < 5 Then
-            MessageBox.Show("No se ha introducido duracion o no se han rellenado todos los campos")
+        Dim duracion As TimeSpan
+        If Not TimeSpan.TryParse(txtDuracion.Text, duracion) Then
+            MessageBox.Show("No se ha introducido duracion o no se cumple el formato")
             txtDuracion.Clear()
             txtDuracion.Focus()
             Exit Sub
         End If
-        If controlDeErroresTxt(txtDuracion, "No se ha introducido nombre", True) Then
-            Exit Sub
-        End If
-        If txtFechaInicio.Text < Date.Today Then
-            MessageBox.Show("La fecha inicio no puede ser menor que hoy")
-            txtFechaInicio.Clear()
+        Dim fechaInicio, fechaFin As Date
+        If Not Date.TryParse(txtFechaInicio.Text, fechaInicio) OrElse fechaInicio < Date.Today Then
+            MessageBox.Show("La fecha inicio es anterior a hoy o no se cumple el formato")
+            txtFechaInicio.Text = Today
             txtFechaInicio.Focus()
             Exit Sub
         End If
-        If txtFechaInicio.Text >= txtFechaFin.Text Then
-            MessageBox.Show("La fecha fin no puede ser menor a fecha inicio")
-            txtFechaFin.Clear()
+        If Not Date.TryParse(txtFechaFin.Text, fechaFin) OrElse fechaInicio > fechaFin Then
+            MessageBox.Show("La fecha fin es anterior a fecha inicio o no se cumple el formato")
+            txtFechaFin.Text = Today
             txtFechaFin.Focus()
             Exit Sub
         End If
         If controlDeErroresTxt(txtNumMaxVol, "No se ha introducido numero máximo de voluntarios", True) Then
             Exit Sub
         End If
-        If controlDeErroresTxt(txtNumMaxVol, "No se ha introducido descripción", True) Then
-            Exit Sub
-        End If
         If controlDeErroresTxt(cbxOrganizacion, "No se ha seleccionado organización", False) Then
             Exit Sub
         End If
-        If controlDeErroresChk(chklTipoActividad, "No se ha seleccionado tipo de actividad") Then
+        If controlDeErroresChk(chkTipoActividad, "No se ha seleccionado tipo de actividad") Then
             Exit Sub
         End If
         If controlDeErroresChk(chklODS, "No se ha seleccionado ODS") Then
@@ -114,14 +70,26 @@ Public Class Form1
             Exit Sub
         End If
 
-        Dim duracion As TimeSpan
+        Dim actividad As New Actividad(txtNombre.Text, duracion, txtFechaInicio.Text, txtFechaFin.Text, txtNumMaxVol.Text, cbxOrganizacion.Text, txtDescripcion.Text)
+        For Each t In chkTipoActividad.CheckedItems
+            actividad.AñadirTipo(t)
+        Next
+        For Each o In chklODS.CheckedItems
+            actividad.AñadirOds(o)
+        Next
+        If chkVoluntarios.CheckedItems.Count > 0 Then
+            For Each v In chkVoluntarios.CheckedItems
+                actividad.AñadirVoluntarios(v)
+            Next
+        End If
 
-        TimeSpan.TryParse(txtDuracion.Text, duracion)
+        If gestion.AnadirActividad(actividad) Then
+            MessageBox.Show($"Actividad ""{actividad.Nombre}"" añadida")
+        Else
+            MessageBox.Show($"Ya existe una actividad de nombre ""{actividad.Nombre}""")
+        End If
 
-        Dim actividad As New Actividad(txtNombre.Text, duracion, txtFechaInicio.Text, txtFechaFin.Text, txtNumMaxVol.Text, 2, txtDescripcion.Text)
-
-        gestion.AnadirActividad(actividad)
-        dgvActividades.DataSource = gestionBD.MostrarActividades
+        dgvActividades.DataSource = gestion.MostrarActividades
     End Sub
 
     Public Function controlDeErroresTxt(campo As Object, mensaje As String, limpiar As Boolean) As Boolean
@@ -144,5 +112,116 @@ Public Class Form1
         End If
         Return False
     End Function
+
+    Private Sub btn_Modificar_actividad_Click(sender As Object, e As EventArgs) Handles btn_Modificar_actividad.Click
+        If controlDeErroresTxt(txtNombre, "No se ha introducido nombre", True) Then
+            Exit Sub
+        End If
+        Dim duracion As TimeSpan
+        If Not TimeSpan.TryParse(txtDuracion.Text, duracion) Then
+>>>>>>> Daniel
+            MessageBox.Show("No se ha introducido duracion o no se han rellenado todos los campos")
+            txtDuracion.Clear()
+            txtDuracion.Focus()
+            Exit Sub
+        End If
+        Dim fechaInicio, fechaFin As Date
+        If Not Date.TryParse(txtFechaInicio.Text, fechaInicio) OrElse fechaInicio < Date.Today Then
+            MessageBox.Show("La fecha inicio es anterior a hoy o no se cumple el formato")
+>>>>>>> Daniel
+            txtFechaInicio.Clear()
+            txtFechaInicio.Focus()
+            Exit Sub
+        End If
+        If Not Date.TryParse(txtFechaFin.Text, fechaFin) OrElse fechaInicio > fechaFin Then
+            MessageBox.Show("La fecha fin es anterior a fecha inicio o no se cumple el formato")
+>>>>>>> Daniel
+            txtFechaFin.Clear()
+            txtFechaFin.Focus()
+            Exit Sub
+        End If
+        If controlDeErroresTxt(txtNumMaxVol, "No se ha introducido numero máximo de voluntarios", True) Then
+            Exit Sub
+        End If
+        If controlDeErroresTxt(txtNumMaxVol, "No se ha introducido descripción", True) Then
+            Exit Sub
+        End If
+        If controlDeErroresTxt(cbxOrganizacion, "No se ha seleccionado organización", False) Then
+            Exit Sub
+        End If
+        If controlDeErroresChk(chkTipoActividad, "No se ha seleccionado tipo de actividad") Then
+>>>>>>> Daniel
+            Exit Sub
+        End If
+        If controlDeErroresChk(chklODS, "No se ha seleccionado ODS") Then
+            Exit Sub
+        End If
+        If controlDeErroresTxt(txtDescripcion, "No se ha introducido descripción", True) Then
+            Exit Sub
+        End If
+
+        Dim actividad As New Actividad(txtNombre.Text, duracion, txtFechaInicio.Text, txtFechaFin.Text, txtNumMaxVol.Text, cbxOrganizacion.Text, txtDescripcion.Text)
+        For Each t In chkTipoActividad.CheckedItems
+            actividad.AñadirTipo(t)
+        Next
+        For Each o In chklODS.CheckedItems
+            actividad.AñadirOds(o)
+        Next
+        If chkVoluntarios.CheckedItems.Count > 0 Then
+            For Each v In chkVoluntarios.CheckedItems
+                actividad.AñadirVoluntarios(v)
+            Next
+        End If
+        Dim respuesta As String = InputBox("Introduce el nombre de la actividad a modificar", "Entrada de usuario")
+        Dim resultado As Boolean = gestion.ModificarActividad(actividad, respuesta)
+        If resultado Then
+            MessageBox.Show($"Actividad ""{respuesta}"" modificada")
+        Else
+            MessageBox.Show($"Actividad ""{respuesta}"" no existe")
+        End If
+
+        dgvActividades.DataSource = gestion.MostrarActividades
+    End Sub
+
+    Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        txtNombre.Clear()
+        txtDuracion.Clear()
+        txtFechaInicio.Text = Today
+        txtFechaFin.Text = Today
+        txtNumMaxVol.Clear()
+        cbxOrganizacion.SelectedIndex = -1
+        For i As Integer = 0 To chkTipoActividad.Items.Count - 1
+            chkTipoActividad.SetItemChecked(i, False)
+        Next
+        chkTipoActividad.SelectedIndex = -1
+        For i As Integer = 0 To chklODS.Items.Count - 1
+            chklODS.SetItemChecked(i, False)
+        Next
+        chklODS.SelectedIndex = -1
+        For i As Integer = 0 To chkVoluntarios.Items.Count - 1
+            chkVoluntarios.SetItemChecked(i, False)
+        Next
+        chkVoluntarios.SelectedIndex = -1
+        txtDescripcion.Clear()
+    End Sub
+
+
+    Private Sub btn_filtrar_actividad_click(sender As Object, e As EventArgs) Handles btn_Filtrar_actividad.Click
+        Dim respuesta As String = InputBox("Introduce el nombre de la actividad a modificar", "Entrada de usuario")
+        dgvActividades.DataSource = gestion.FiltrarActividad(respuesta)
+        If dgvActividades.RowCount < 1 Then
+            dgvActividades.DataSource = gestion.MostrarActividades
+            MessageBox.Show($"Actividad ""{respuesta}"" no existe")
+        End If
+    End Sub
+
+    Private Sub btnMostrarTodo_Click(sender As Object, e As EventArgs) Handles btnMostrarTodo.Click
+        dgvActividades.DataSource = gestion.MostrarActividades
+    End Sub
+
+    Private Sub btnFiltradoAvanzado_Click(sender As Object, e As EventArgs) Handles btnFiltradoAvanzado.Click
+
+    End Sub
+>>>>>>> Daniel
 
 End Class

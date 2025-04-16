@@ -22,9 +22,11 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.chklVoluntario = New System.Windows.Forms.CheckedListBox()
+        Me.chkVoluntarios = New System.Windows.Forms.CheckedListBox()
+>>>>>>> Daniel
         Me.Label19 = New System.Windows.Forms.Label()
         Me.btn_Añadir_actividad = New System.Windows.Forms.Button()
         Me.btn_Filtrar_actividad = New System.Windows.Forms.Button()
@@ -37,7 +39,7 @@ Partial Class Form1
         Me.txtDuracion = New System.Windows.Forms.MaskedTextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.chklODS = New System.Windows.Forms.CheckedListBox()
-        Me.chklTipoActividad = New System.Windows.Forms.CheckedListBox()
+        Me.chkTipoActividad = New System.Windows.Forms.CheckedListBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -48,6 +50,9 @@ Partial Class Form1
         Me.Label11 = New System.Windows.Forms.Label()
         Me.dgvActividades = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.btnMostrarTodo = New System.Windows.Forms.Button()
+        Me.btnFiltradoAvanzado = New System.Windows.Forms.Button()
         CType(Me.dgvActividades, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -68,13 +73,15 @@ Partial Class Form1
         Me.Label20.TabIndex = 55
         Me.Label20.Text = "Descripción"
         '
-        'chklVoluntario
+        'chkVoluntarios
         '
-        Me.chklVoluntario.FormattingEnabled = True
-        Me.chklVoluntario.Location = New System.Drawing.Point(1027, 160)
-        Me.chklVoluntario.Name = "chklVoluntario"
-        Me.chklVoluntario.Size = New System.Drawing.Size(298, 109)
-        Me.chklVoluntario.TabIndex = 54
+        Me.chkVoluntarios.FormattingEnabled = True
+        Me.chkVoluntarios.Location = New System.Drawing.Point(1399, 197)
+        Me.chkVoluntarios.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVoluntarios.Name = "chkVoluntarios"
+        Me.chkVoluntarios.Size = New System.Drawing.Size(396, 140)
+        Me.chkVoluntarios.TabIndex = 54
+>>>>>>> Daniel
         '
         'Label19
         '
@@ -87,7 +94,9 @@ Partial Class Form1
         '
         'btn_Añadir_actividad
         '
-        Me.btn_Añadir_actividad.Location = New System.Drawing.Point(1061, 462)
+        Me.btn_Añadir_actividad.Location = New System.Drawing.Point(1399, 543)
+        Me.btn_Añadir_actividad.Margin = New System.Windows.Forms.Padding(4)
+>>>>>>> Daniel
         Me.btn_Añadir_actividad.Name = "btn_Añadir_actividad"
         Me.btn_Añadir_actividad.Size = New System.Drawing.Size(225, 44)
         Me.btn_Añadir_actividad.TabIndex = 33
@@ -96,7 +105,9 @@ Partial Class Form1
         '
         'btn_Filtrar_actividad
         '
-        Me.btn_Filtrar_actividad.Location = New System.Drawing.Point(1061, 650)
+        Me.btn_Filtrar_actividad.Location = New System.Drawing.Point(1399, 622)
+        Me.btn_Filtrar_actividad.Margin = New System.Windows.Forms.Padding(4)
+>>>>>>> Daniel
         Me.btn_Filtrar_actividad.Name = "btn_Filtrar_actividad"
         Me.btn_Filtrar_actividad.Size = New System.Drawing.Size(225, 41)
         Me.btn_Filtrar_actividad.TabIndex = 52
@@ -105,23 +116,31 @@ Partial Class Form1
         '
         'cbxOrganizacion
         '
+        Me.cbxOrganizacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxOrganizacion.FormattingEnabled = True
-        Me.cbxOrganizacion.Location = New System.Drawing.Point(359, 251)
+        Me.cbxOrganizacion.Location = New System.Drawing.Point(508, 309)
+        Me.cbxOrganizacion.Margin = New System.Windows.Forms.Padding(4)
+>>>>>>> Daniel
         Me.cbxOrganizacion.Name = "cbxOrganizacion"
         Me.cbxOrganizacion.Size = New System.Drawing.Size(114, 21)
         Me.cbxOrganizacion.TabIndex = 51
         '
         'txtNumMaxVol
         '
-        Me.txtNumMaxVol.Location = New System.Drawing.Point(359, 206)
-        Me.txtNumMaxVol.Mask = "12"
+        Me.txtNumMaxVol.Location = New System.Drawing.Point(508, 254)
+        Me.txtNumMaxVol.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNumMaxVol.Mask = "00"
+>>>>>>> Daniel
         Me.txtNumMaxVol.Name = "txtNumMaxVol"
         Me.txtNumMaxVol.Size = New System.Drawing.Size(114, 20)
         Me.txtNumMaxVol.TabIndex = 50
+        Me.txtNumMaxVol.ValidatingType = GetType(Integer)
         '
         'btn_Borrar_Actividad
         '
-        Me.btn_Borrar_Actividad.Location = New System.Drawing.Point(1061, 524)
+        Me.btn_Borrar_Actividad.Location = New System.Drawing.Point(1399, 864)
+        Me.btn_Borrar_Actividad.Margin = New System.Windows.Forms.Padding(4)
+>>>>>>> Daniel
         Me.btn_Borrar_Actividad.Name = "btn_Borrar_Actividad"
         Me.btn_Borrar_Actividad.Size = New System.Drawing.Size(225, 44)
         Me.btn_Borrar_Actividad.TabIndex = 38
@@ -139,7 +158,9 @@ Partial Class Form1
         '
         'btn_Modificar_actividad
         '
-        Me.btn_Modificar_actividad.Location = New System.Drawing.Point(1061, 591)
+        Me.btn_Modificar_actividad.Location = New System.Drawing.Point(1399, 783)
+        Me.btn_Modificar_actividad.Margin = New System.Windows.Forms.Padding(4)
+>>>>>>> Daniel
         Me.btn_Modificar_actividad.Name = "btn_Modificar_actividad"
         Me.btn_Modificar_actividad.Size = New System.Drawing.Size(225, 44)
         Me.btn_Modificar_actividad.TabIndex = 36
@@ -174,18 +195,22 @@ Partial Class Form1
         'chklODS
         '
         Me.chklODS.FormattingEnabled = True
-        Me.chklODS.Location = New System.Drawing.Point(703, 160)
+        Me.chklODS.Location = New System.Drawing.Point(967, 197)
+        Me.chklODS.Margin = New System.Windows.Forms.Padding(4)
+>>>>>>> Daniel
         Me.chklODS.Name = "chklODS"
         Me.chklODS.Size = New System.Drawing.Size(298, 109)
         Me.chklODS.TabIndex = 45
         '
-        'chklTipoActividad
+        'chkTipoActividad
         '
-        Me.chklTipoActividad.FormattingEnabled = True
-        Me.chklTipoActividad.Location = New System.Drawing.Point(514, 160)
-        Me.chklTipoActividad.Name = "chklTipoActividad"
-        Me.chklTipoActividad.Size = New System.Drawing.Size(162, 109)
-        Me.chklTipoActividad.TabIndex = 44
+        Me.chkTipoActividad.FormattingEnabled = True
+        Me.chkTipoActividad.Location = New System.Drawing.Point(715, 197)
+        Me.chkTipoActividad.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkTipoActividad.Name = "chkTipoActividad"
+        Me.chkTipoActividad.Size = New System.Drawing.Size(215, 140)
+        Me.chkTipoActividad.TabIndex = 44
+>>>>>>> Daniel
         '
         'Label18
         '
@@ -264,6 +289,7 @@ Partial Class Form1
         Me.dgvActividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvActividades.Location = New System.Drawing.Point(45, 405)
         Me.dgvActividades.Name = "dgvActividades"
+        Me.dgvActividades.ReadOnly = True
         Me.dgvActividades.RowHeadersWidth = 51
         Me.dgvActividades.Size = New System.Drawing.Size(945, 364)
         Me.dgvActividades.TabIndex = 32
@@ -272,21 +298,58 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(421, 4)
+        Me.Label1.Location = New System.Drawing.Point(699, 20)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+>>>>>>> Daniel
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(460, 73)
         Me.Label1.TabIndex = 57
         Me.Label1.Text = "ACTIVIDADES"
         '
+        'btnLimpiar
+        '
+        Me.btnLimpiar.BackgroundImage = CType(resources.GetObject("btnLimpiar.BackgroundImage"), System.Drawing.Image)
+        Me.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnLimpiar.Location = New System.Drawing.Point(447, 403)
+        Me.btnLimpiar.Name = "btnLimpiar"
+        Me.btnLimpiar.Size = New System.Drawing.Size(46, 44)
+        Me.btnLimpiar.TabIndex = 58
+        Me.btnLimpiar.UseVisualStyleBackColor = True
+        '
+        'btnMostrarTodo
+        '
+        Me.btnMostrarTodo.Location = New System.Drawing.Point(1399, 701)
+        Me.btnMostrarTodo.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnMostrarTodo.Name = "btnMostrarTodo"
+        Me.btnMostrarTodo.Size = New System.Drawing.Size(300, 54)
+        Me.btnMostrarTodo.TabIndex = 59
+        Me.btnMostrarTodo.Text = "Mostrar Actividades"
+        Me.btnMostrarTodo.UseVisualStyleBackColor = True
+        '
+        'btnFiltradoAvanzado
+        '
+        Me.btnFiltradoAvanzado.Location = New System.Drawing.Point(1721, 622)
+        Me.btnFiltradoAvanzado.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnFiltradoAvanzado.Name = "btnFiltradoAvanzado"
+        Me.btnFiltradoAvanzado.Size = New System.Drawing.Size(148, 50)
+        Me.btnFiltradoAvanzado.TabIndex = 60
+        Me.btnFiltradoAvanzado.Text = "Filtrado Avanzado"
+        Me.btnFiltradoAvanzado.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1357, 783)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(1914, 1055)
+        Me.Controls.Add(Me.btnFiltradoAvanzado)
+        Me.Controls.Add(Me.btnMostrarTodo)
+        Me.Controls.Add(Me.btnLimpiar)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtDescripcion)
         Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.chklVoluntario)
+        Me.Controls.Add(Me.chkVoluntarios)
+>>>>>>> Daniel
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.btn_Añadir_actividad)
         Me.Controls.Add(Me.btn_Filtrar_actividad)
@@ -299,7 +362,7 @@ Partial Class Form1
         Me.Controls.Add(Me.txtDuracion)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.chklODS)
-        Me.Controls.Add(Me.chklTipoActividad)
+        Me.Controls.Add(Me.chkTipoActividad)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label16)
@@ -319,7 +382,8 @@ Partial Class Form1
 
     Friend WithEvents txtDescripcion As TextBox
     Friend WithEvents Label20 As Label
-    Friend WithEvents chklVoluntario As CheckedListBox
+    Friend WithEvents chkVoluntarios As CheckedListBox
+>>>>>>> Daniel
     Friend WithEvents Label19 As Label
     Friend WithEvents btn_Añadir_actividad As Button
     Friend WithEvents btn_Filtrar_actividad As Button
@@ -332,7 +396,7 @@ Partial Class Form1
     Friend WithEvents txtDuracion As MaskedTextBox
     Friend WithEvents txtNombre As TextBox
     Friend WithEvents chklODS As CheckedListBox
-    Friend WithEvents chklTipoActividad As CheckedListBox
+    Friend WithEvents chkTipoActividad As CheckedListBox
     Friend WithEvents Label18 As Label
     Friend WithEvents Label17 As Label
     Friend WithEvents Label16 As Label
@@ -343,4 +407,7 @@ Partial Class Form1
     Friend WithEvents Label11 As Label
     Friend WithEvents dgvActividades As DataGridView
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnLimpiar As Button
+    Friend WithEvents btnMostrarTodo As Button
+    Friend WithEvents btnFiltradoAvanzado As Button
 End Class

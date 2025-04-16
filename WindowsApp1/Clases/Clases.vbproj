@@ -65,12 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actividad.vb" />
-    <Compile Include="Ciclo.vb" />
-    <Compile Include="Disponibilidad.vb" />
     <Compile Include="Gestion_Actividad.vb" />
+<<<<<<< HEAD
     <Compile Include="Gestion_BBDD.vb" />
     <Compile Include="ODS.vb" />
     <Compile Include="Organizacion.vb" />
+=======
+>>>>>>> Daniel
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -86,8 +87,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Tipo_Actividad.vb" />
-    <Compile Include="Voluntario.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
